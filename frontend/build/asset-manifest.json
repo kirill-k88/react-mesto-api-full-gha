@@ -1,26 +1,26 @@
 {
   "files": {
-    "main.css": "/react-mesto-api-full-gha/static/css/main.8146e0fc.css",
-    "main.js": "/react-mesto-api-full-gha/static/js/main.912b65ce.js",
-    "static/media/Inter-Medium.woff": "/react-mesto-api-full-gha/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
-    "static/media/Inter-Black.woff": "/react-mesto-api-full-gha/static/media/Inter-Black.c6938660eec019fefd68.woff",
-    "static/media/Inter-Regular.woff": "/react-mesto-api-full-gha/static/media/Inter-Regular.8c206db99195777c6769.woff",
-    "static/media/Inter-Medium.woff2": "/react-mesto-api-full-gha/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
-    "static/media/Inter-Black.woff2": "/react-mesto-api-full-gha/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
-    "static/media/Inter-Regular.woff2": "/react-mesto-api-full-gha/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
-    "static/media/header-logo.svg": "/react-mesto-api-full-gha/static/media/header-logo.bbe2a6eafac19c3d031c272c424875ca.svg",
-    "static/media/button-like.svg": "/react-mesto-api-full-gha/static/media/button-like.1ad06e85f169668a1f36.svg",
-    "index.html": "/react-mesto-api-full-gha/index.html",
-    "static/media/button-remove.svg": "/react-mesto-api-full-gha/static/media/button-remove.ce3b64935accf9b8212e.svg",
-    "static/media/button-like-active.svg": "/react-mesto-api-full-gha/static/media/button-like-active.35948469632d0421d697.svg",
-    "static/media/profile-button-edit.svg": "/react-mesto-api-full-gha/static/media/profile-button-edit.6c7bf05444b9793fdf6e.svg",
-    "static/media/popup-button-close.svg": "/react-mesto-api-full-gha/static/media/popup-button-close.039f1f5203f653b4bacd.svg",
-    "static/media/profile-button-add.svg": "/react-mesto-api-full-gha/static/media/profile-button-add.bed8c136e13907f5eefb.svg",
-    "main.8146e0fc.css.map": "/react-mesto-api-full-gha/static/css/main.8146e0fc.css.map",
-    "main.912b65ce.js.map": "/react-mesto-api-full-gha/static/js/main.912b65ce.js.map"
+    "main.css": "/static/css/main.faa1c111.css",
+    "main.js": "/static/js/main.f5162c5b.js",
+    "static/media/Inter-Medium.woff": "/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff": "/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff": "/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2": "/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2": "/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2": "/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/header-logo.svg": "/static/media/header-logo.bbe2a6eafac19c3d031c272c424875ca.svg",
+    "static/media/button-like.svg": "/static/media/button-like.1ad06e85f169668a1f36.svg",
+    "index.html": "/index.html",
+    "static/media/button-remove.svg": "/static/media/button-remove.ce3b64935accf9b8212e.svg",
+    "static/media/button-like-active.svg": "/static/media/button-like-active.35948469632d0421d697.svg",
+    "static/media/profile-button-edit.svg": "/static/media/profile-button-edit.6c7bf05444b9793fdf6e.svg",
+    "static/media/popup-button-close.svg": "/static/media/popup-button-close.039f1f5203f653b4bacd.svg",
+    "static/media/profile-button-add.svg": "/static/media/profile-button-add.bed8c136e13907f5eefb.svg",
+    "main.faa1c111.css.map": "/static/css/main.faa1c111.css.map",
+    "main.f5162c5b.js.map": "/static/js/main.f5162c5b.js.map"
   },
   "entrypoints": [
-    "static/css/main.8146e0fc.css",
-    "static/js/main.912b65ce.js"
+    "static/css/main.faa1c111.css",
+    "static/js/main.f5162c5b.js"
   ]
 }
