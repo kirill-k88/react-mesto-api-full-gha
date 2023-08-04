@@ -1,0 +1,14 @@
+.auth__button-submit_inactive {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 11px 0 13px;
+  border-radius: 2px;
+  opacity: 0.5;
+  transition: none;
+  cursor: default;
+}
+
+.auth__button-submit_inactive:hover {
+  opacity: 0.5;
+}

@@ -1,0 +1,15 @@
+.header__logo {
+  vertical-align: top;
+  width: 142px;
+  height: 33px;
+
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .header__logo {
+    width: 104px;
+    height: 25px;
+  }
+}

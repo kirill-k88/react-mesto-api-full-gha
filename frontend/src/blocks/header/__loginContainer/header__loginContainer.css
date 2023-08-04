@@ -1,0 +1,5 @@
+.header__loginContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
