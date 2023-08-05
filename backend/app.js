@@ -15,7 +15,10 @@ const cardsRouter = require('./routes/cards');
 const { createUser, login } = require('./controllers/users');
 
 const auth = require('./middlewares/auth');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
+const cors = require('./middlewares/cors');
+
 const NotFoundError = require('./errorClasses/NotFoundError');
 
 mongoose
@@ -31,6 +34,9 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(requestLogger);
+app.use(cors);
 
 app.post(
   '/signin',
@@ -70,6 +76,7 @@ app.use((req, res, next) => {
   next(new NotFoundError('Был запрошен несуществующий роут'));
 });
 
+app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 

@@ -35,4 +35,6 @@ class ApiAuth {
   }
 }
 
-export const apiAuth = new ApiAuth({ baseUrl: 'https://auth.nomoreparties.co' });
+export const apiAuth = new ApiAuth({
+  baseUrl: 'https://api.supermesto.students.nomoreparties.co'
+});
