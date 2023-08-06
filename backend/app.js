@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const {
-  SERVER_PORT = 4000,
+  SERVER_PORT = 3000,
   MONGODB_CONNECTION = 'mongodb://127.0.0.1:27017/mestodb',
 } = process.env;
 
