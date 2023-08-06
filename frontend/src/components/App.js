@@ -67,8 +67,8 @@ function App() {
 
   function handleCardDelete(card, setIsLoading) {
     function makeRequest() {
-      return api.deleteCard(card._id).then(({ message }) => {
-        if (message === 'Пост удалён') {
+      return api.deleteCard(card._id).then(deletedCard => {
+        if (deletedCard._id === card._id) {
           setCards(cards.filter(item => item._id !== card._id));
           closeAllPopups();
         }
@@ -79,7 +79,7 @@ function App() {
   }
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some(item => item._id === currentUser._id);
+    const isLiked = card.likes.some(item => item === currentUser._id);
 
     (!isLiked ? api.sendLike(card._id) : api.deleteLike(card._id))
       .then(newCard => {

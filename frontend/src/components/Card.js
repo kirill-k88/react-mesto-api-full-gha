@@ -4,7 +4,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext.js';
 function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
   const currentUser = useContext(CurrentUserContext);
 
-  const isLiked = card.likes.some(i => i._id === currentUser._id);
+  const isLiked = card.likes.some(i => i === currentUser._id);
 
   function handleClick() {
     onCardClick(card);
@@ -20,7 +20,7 @@ function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
 
   return (
     <li className="cards__card">
-      {card.owner._id === currentUser._id && (
+      {card.owner === currentUser._id && (
         <button
           className="cards__button-remove common-link"
           type="button"

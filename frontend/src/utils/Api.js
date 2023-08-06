@@ -10,6 +10,7 @@ class Api {
   }
 
   getInitialCards() {
+    console.log(localStorage.getItem('token'));
     return this._request('/cards', { headers: this._headers });
   }
 
@@ -64,9 +65,9 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-65',
+  baseUrl: 'https://api.supermesto.students.nomoreparties.co',
   headers: {
-    authorization: '5dc10575-faf8-4cb0-bf95-93ad59b5cd72',
+    authorization: `Bearer ${localStorage.getItem('token')}`,
     'Content-Type': 'application/json'
   }
 });
