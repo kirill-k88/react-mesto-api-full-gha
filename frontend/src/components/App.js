@@ -148,8 +148,8 @@ function App() {
           localStorage.setItem('token', data.token);
           return apiAuth.checkToken();
         })
-        .then(checkAnswer => {
-          setEmail(checkAnswer.data.email);
+        .then(data => {
+          setEmail(data.email);
           navigate('/');
         });
     }
@@ -182,8 +182,8 @@ function App() {
     if (localStorage.getItem('token')) {
       apiAuth
         .checkToken()
-        .then(checkAnswer => {
-          setEmail(checkAnswer.data.email);
+        .then(data => {
+          setEmail(data.email);
           setLoggedIn(true);
           navigate('/');
         })

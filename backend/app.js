@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 const {
-  SERVER_PORT = 3000,
+  SERVER_PORT = 4000,
   MONGODB_CONNECTION = 'mongodb://127.0.0.1:27017/mestodb',
 } = process.env;
 
@@ -18,6 +18,7 @@ const auth = require('./middlewares/auth');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 const errorHandler = require('./middlewares/errorHandler');
 const cors = require('./middlewares/cors');
+const preflight = require('./middlewares/preflight');
 
 const NotFoundError = require('./errorClasses/NotFoundError');
 
@@ -35,8 +36,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(requestLogger);
 app.use(cors);
+app.use(preflight);
+
+app.use(requestLogger);
 
 app.post(
   '/signin',
