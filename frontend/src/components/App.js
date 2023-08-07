@@ -146,16 +146,16 @@ function App() {
         .then(data => {
           setLoggedIn(true);
           localStorage.setItem('token', data.token);
-          return apiAuth.checkToken();
+          return apiAuth.getUserByToken(data.token);
         })
         .then(data => {
           setEmail(data.email);
+          setLoggedIn(true);
           navigate('/');
         });
     }
 
     handleSubmit(makeRequest, setIsLoading, () => {
-      localStorage.removeItem('token');
       setIsRegisterSuccess(false);
       setIsInfoTooltipOpen(true);
       setIsLoading(false);
@@ -179,9 +179,10 @@ function App() {
   }
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    const token = localStorage.getItem('token');
+    if (token) {
       apiAuth
-        .checkToken()
+        .getUserByToken(token)
         .then(data => {
           setEmail(data.email);
           setLoggedIn(true);
@@ -193,6 +194,7 @@ function App() {
     } else {
       navigate('/sign-in');
     }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -212,7 +214,7 @@ function App() {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  }, [loggedIn]);
 
   const isOpen =
     isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard.link;

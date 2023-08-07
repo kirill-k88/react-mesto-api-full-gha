@@ -1,6 +1,6 @@
 import { checkResponse } from './checkResponse';
 class ApiAuth {
-  constructor({ baseUrl }) {
+  constructor(baseUrl) {
     this._baseUrl = baseUrl;
   }
 
@@ -8,12 +8,12 @@ class ApiAuth {
     return fetch(`${this._baseUrl}${endpoint}`, options).then(checkResponse);
   }
 
-  checkToken() {
+  getUserByToken(token) {
     return this._request('/users/me', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${localStorage.getItem('token')}`
+        Authorization: `Bearer ${token}`
       }
     });
   }
@@ -35,7 +35,7 @@ class ApiAuth {
   }
 }
 
-export const apiAuth = new ApiAuth({
-  baseUrl: 'https://api.supermesto.students.nomoreparties.co'
-  /* baseUrl: 'http://localhost:4000' */
-});
+export const apiAuth = new ApiAuth(
+  /* baseUrl: 'https://api.supermesto.students.nomoreparties.co' */
+  'http://localhost:4000'
+);
