@@ -36,6 +36,6 @@ class ApiAuth {
 }
 
 export const apiAuth = new ApiAuth(
-  /* baseUrl: 'https://api.supermesto.students.nomoreparties.co' */
-  'http://localhost:4000'
+  'https://api.supermesto.students.nomoreparties.co'
+  /*  'http://localhost:4000' */
 );

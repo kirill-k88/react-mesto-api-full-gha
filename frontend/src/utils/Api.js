@@ -69,6 +69,6 @@ class Api {
 }
 
 export const api = new Api(
-  /* baseUrl: 'https://api.supermesto.students.nomoreparties.co', */
-  'http://localhost:4000'
+  'https://api.supermesto.students.nomoreparties.co'
+  /*   'http://localhost:4000' */
 );
