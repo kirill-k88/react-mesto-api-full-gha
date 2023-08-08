@@ -10,7 +10,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.37.235
+IP 158.160.37.235
 
 Frontend https://superiormesto.students.nomoreparties.co/
 
