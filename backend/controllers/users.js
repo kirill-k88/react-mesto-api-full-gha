@@ -3,10 +3,24 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { checkResult } = require('./validation');
+const { checkResult } = require('../utils/validation');
+const ConflictError = require('../errorClasses/ConflictError');
+
+module.exports.getAllUsers = (req, res, next) => {
+  User.find({})
+    .then((users) => res.send(users))
+    .catch(next);
+};
 
 module.exports.getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
+    .then(checkResult)
+    .then((user) => res.send(user))
+    .catch(next);
+};
+
+module.exports.getUser = (req, res, next) => {
+  User.findById(req.params.userId)
     .then(checkResult)
     .then((user) => res.send(user))
     .catch(next);
@@ -20,14 +34,21 @@ module.exports.createUser = (req, res, next) => {
       return User.create(req.body);
     })
     .then((user) =>
-      res.send({
+      res.status(201).send({
         name: user.name,
         avatar: user.avatar,
         about: user.about,
         email: user.email,
       }),
     )
-    .catch(next);
+    .catch((err) => {
+      if (err.code === 11000) {
+        return next(
+          new ConflictError('Ползователь с таким email уже существует'),
+        );
+      }
+      return next(err);
+    });
 };
 
 module.exports.updateUser = (req, res, next) => {
