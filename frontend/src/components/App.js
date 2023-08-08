@@ -67,8 +67,9 @@ function App() {
 
   function handleCardDelete(card, setIsLoading) {
     function makeRequest() {
-      return api.deleteCard(card._id).then(deletedCard => {
-        if (deletedCard._id === card._id) {
+      return api.deleteCard(card._id).then(ack => {
+        console.log(ack.acknowledged);
+        if (ack.acknowledged) {
           setCards(cards.filter(item => item._id !== card._id));
           closeAllPopups();
         }
@@ -115,7 +116,7 @@ function App() {
   function handleAddPlaceSubmit(cardObject, setInputValues, setIsLoading) {
     function makeRequest() {
       return api.sendNewCard(cardObject).then(result => {
-        setCards([result, ...cards]);
+        setCards([...cards, result]);
         setInputValues({ name: '', link: '' });
         closeAllPopups();
       });
@@ -236,7 +237,11 @@ function App() {
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="root">
-        <Header email={email} loggedIn={loggedIn} onLogout={handleLogout} />
+        <Header
+          email={email}
+          loggedIn={loggedIn}
+          onLogout={handleLogout}
+        />
         <Routes>
           <Route
             path="/"
@@ -257,9 +262,23 @@ function App() {
               />
             }
           />
-          <Route path="/sign-up" element={<Register onRegister={handleRegister} />} />
-          <Route path="/sign-in" element={<Login onLogin={handleLogin} />} />
-          <Route path="*" element={<Navigate to="/sign-in" replace />} />
+          <Route
+            path="/sign-up"
+            element={<Register onRegister={handleRegister} />}
+          />
+          <Route
+            path="/sign-in"
+            element={<Login onLogin={handleLogin} />}
+          />
+          <Route
+            path="*"
+            element={
+              <Navigate
+                to="/sign-in"
+                replace
+              />
+            }
+          />
         </Routes>
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
@@ -286,7 +305,10 @@ function App() {
           isRegisterSuccess={isRegisterSuccess}
           onClose={closeAllPopups}
         />
-        <ImagePopup card={selectedCard} onClose={closeAllPopups} />
+        <ImagePopup
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
         <Footer />
       </div>
     </CurrentUserContext.Provider>

@@ -19,6 +19,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       name: currentUser.name,
       about: currentUser.about
     });
+    // eslint-disable-next-line
   }, [currentUser, isOpen]);
 
   return (
@@ -30,8 +31,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
       isOpen={isOpen}
       isLoading={isLoading}
       onClose={onClose}
-      onSubmit={handleSubmit}
-    >
+      onSubmit={handleSubmit}>
       <input
         className="popup__input popup__input_content_heading"
         name="name"
