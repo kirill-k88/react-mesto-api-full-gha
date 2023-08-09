@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { checkResult } = require('../utils/validation');
-const ConflictError = require('../errorClasses/ConflictError');
+const { checkResult, checkDBValidationError } = require('../utils/validation');
 
 module.exports.getAllUsers = (req, res, next) => {
   User.find({})
@@ -39,14 +38,7 @@ module.exports.createUser = (req, res, next) => {
       about: user.about,
       email: user.email,
     }))
-    .catch((err) => {
-      if (err.code === 11000) {
-        return next(
-          new ConflictError('Ползователь с таким email уже существует'),
-        );
-      }
-      return next(err);
-    });
+    .catch((err) => next(checkDBValidationError(err)));
 };
 
 module.exports.updateUser = (req, res, next) => {
@@ -55,7 +47,9 @@ module.exports.updateUser = (req, res, next) => {
     runValidators: true,
   })
     .then((user) => res.send(user))
-    .catch(next);
+    .catch((err) => {
+      next(checkDBValidationError(err));
+    });
 };
 
 module.exports.login = (req, res, next) => {

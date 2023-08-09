@@ -1,5 +1,7 @@
 const NotFoundError = require('../errorClasses/NotFoundError');
 const ForbiddenError = require('../errorClasses/ForbiddenError');
+const BadRequest = require('../errorClasses/BadRequest');
+const ConflictError = require('../errorClasses/ConflictError');
 
 module.exports.checkResult = (data) => {
   if (!data) {
@@ -24,4 +26,18 @@ module.exports.checkResultFindCard = (data, id) => {
     );
   }
   return data;
+};
+
+module.exports.checkDBValidationError = (err) => {
+  if (err.code === 11000) {
+    return new ConflictError(
+      'Ошибка валидации в БД. Данные с указанными полями уже существуют в БД',
+    );
+  }
+
+  if (err.name === 'ValidationError') {
+    return new BadRequest('Ошибка валидации данных в БД');
+  }
+
+  return err;
 };

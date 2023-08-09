@@ -1,5 +1,9 @@
 const Card = require('../models/card');
-const { checkResult, checkResultFindCard } = require('../utils/validation');
+const {
+  checkResult,
+  checkResultFindCard,
+  checkDBValidationError,
+} = require('../utils/validation');
 
 module.exports.getAllCards = (req, res, next) => {
   Card.find({})
@@ -20,7 +24,9 @@ module.exports.createCard = (req, res, next) => {
   const owner = req.user;
   Card.create({ name, link, owner })
     .then((card) => res.status(201).send(card))
-    .catch(next);
+    .catch((err) => {
+      next(checkDBValidationError(err));
+    });
 };
 
 module.exports.likeCard = (req, res, next) => {

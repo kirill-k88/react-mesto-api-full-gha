@@ -46,7 +46,6 @@ module.exports.bodyCardValidator = celebrate({
 module.exports.bodyUserValidator = celebrate({
   body: Joi.object().keys({
     name: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(REGXP_URL),
     about: Joi.string().min(2).max(30),
   }),
 });
